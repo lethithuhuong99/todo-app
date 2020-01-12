@@ -13,6 +13,7 @@
 
 <script type = "text/javascript" >
 
+import Swal from 'sweetalert2';
 import Todo from './Todo';
 
 export default {
@@ -28,6 +29,19 @@ export default {
     completeTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
       this.todos[todoIndex].done = !this.todos[todoIndex].done;
+      if (this.todos[todoIndex].done) {
+        Swal.fire(
+          'Success!',
+          'To-Do completed!',
+          'success',
+        );
+      } else {
+        Swal.fire(
+          'Pending!',
+          'To-Do pending!',
+          'info',
+        );
+      }
     },
 
   },

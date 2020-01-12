@@ -92,11 +92,6 @@ export default {
     },
     completeTodo(todo) {
       this.$emit('complete-todo', todo);
-      Swal.fire(
-        'Success!',
-        'To-Do completed!',
-        'success',
-      );
     },
   },
 };
