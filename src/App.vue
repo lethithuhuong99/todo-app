@@ -1,9 +1,20 @@
 <template>
   <div>
-    <todo-list v-bind:todos="todos"></todo-list>
     <create-todo v-on:create-todo="addTodo"></create-todo>
+    <div id="app">
+      <button
+      class="ui yellow button"
+      v-on:click="clearCompleted">
+      <i class="check icon"></i> Clear completed
+      </button>
+      <button
+      class="ui red button"
+      v-on:click="clearAll">
+      <i class='trash icon'></i> Clear all
+      </button>
+    </div>
+    <todo-list v-bind:todos="todos"></todo-list>
   </div>
-
 </template>
 
 <script>
@@ -18,18 +29,25 @@ export default {
     CreateTodo,
   },
 
-  methods: {
-    addTodo(newTodo) {
-      this.todos.push(newTodo);
-    },
-  },
-
   // data function avails data to the template
   data() {
     return {
       todos: [],
     };
   },
+
+  methods: {
+    addTodo(newTodo) {
+      this.todos.push(newTodo);
+    },
+    clearAll() {
+      this.todos = [];
+    },
+    clearCompleted() {
+      this.todos = this.todos.filter(todo => !todo.done);
+    },
+  },
+
   mounted() {
     /* console.log('App mounted!'); */
     if (localStorage.getItem('todos')) {
@@ -51,7 +69,6 @@ export default {
 </script>
 
 <style>
-
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -64,5 +81,9 @@ export default {
 .title{
   text-align: center;
   margin-top:50px;
+}
+
+body {
+  background-image: linear-gradient(to right, rgba(152, 226, 250,0), rgba(55, 201, 250,1));
 }
 </style>

@@ -43,7 +43,12 @@ export default {
         );
       }
     },
-
+    clearAll() {
+      this.$emit('clear-all');
+    },
+    clearCompleted() {
+      this.$emit('clear-completed');
+    },
   },
 };
 </script>
