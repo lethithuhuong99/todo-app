@@ -78,12 +78,16 @@ export default {
   margin-top: 60px;
 }
 
-.title{
+header {
   text-align: center;
   margin-top:50px;
 }
 
 body {
   background-image: linear-gradient(to right, rgba(152, 226, 250,0), rgba(55, 201, 250,1));
+}
+footer {
+  margin-bottom: 20px;
+  text-align : right;
 }
 </style>
